@@ -57,6 +57,7 @@ public class SampleController {
         redirectAttributes.addFlashAttribute("dto", dto);
 
         return "redirect:/sample/ex3";
+        //exInline()는 내부적으로 RedirectAttributes를 이용히여
     }
 
     @GetMapping("/ex3")
@@ -65,7 +66,7 @@ public class SampleController {
         log.info("ex3");
     }
 
-    @GetMapping({"/ex2-2", "exLink"})
+    @GetMapping({"/exLink"})
     public void exModel2(Model model){
         List<SampleDTO> list = IntStream.rangeClosed(1,20).asLongStream().
                 mapToObj(i -> { //반복문
@@ -81,11 +82,6 @@ public class SampleController {
 
         model.addAttribute("list", list);
     }
-
-//    @GetMapping("/exLayout1")
-//    public void exLayout1(){
-//        log.info("exLayout...........");
-//    }
 
     @GetMapping({"/exLayout1", "/exLayout2", "/exTemplate", "/exSidebar"})
     public void exLayout1(){
