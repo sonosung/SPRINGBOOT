@@ -82,8 +82,13 @@ public class SampleController {
         model.addAttribute("list", list);
     }
 
-    @GetMapping("/exLayout1")
+//    @GetMapping("/exLayout1")
+//    public void exLayout1(){
+//        log.info("exLayout...........");
+//    }
+
+    @GetMapping({"/exLayout1", "/exLayout2", "/exTemplate", "/exSidebar"})
     public void exLayout1(){
-        log.info("exLayout...........");
+        log.info("exLayout...............");
     }
 }
