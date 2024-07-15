@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <uL>
+        <li>
+            <span>=============== p.91 SampleDTO 타입의 객체 20개 출력 ===================</span>
+        </li>
+    </uL>
+
+    <ul>
+        <li th:each="dto : ${list}">
+            [[${dto}]]
+        </li>
+    </ul>
+
+    <uL>
+        <li>
+            <span>==== p.92 반복분의 상태(state)객체 출력 (idx 번호, 홀/짝 등 지정가능.) =====</span>
+        </li>
+    </uL>
+
+    <ul>
+        <li th:each="dto, state : ${list}">
+            [[${state.index}]] --- [[${dto}]]
+        </li>
+    </ul>
+
+    <uL>
+        <li>
+        <span>=========================== p.93 제어문 처리 ===========================</span>
+        </li>
+    </uL>
+
+    <ul>
+        <li th:each="dto, state : ${list}" th:if="${dto.sno % 5 == 0}">
+            [[${dto}]]
+        </li>
+    </ul>
+
+    <uL>
+        <li>
+            <span>==================== 'if ~ unless' 처리 =====================</span>
+        </li>
+    </uL>
+
+    <ul>
+        <li th:each="dto, state : ${list}" >
+            <span th:if="${dto.sno % 5 == 0}" th:text="${'-----------------------' + dto.sno}"></span>
+            <span th:unless="${dto.sno % 5 == 0}" th:text="${dto.first}"></span>
+        </li>
+    </ul>
+
+    <uL>
+        <li>
+            <span>============== 삼항연산자 사용. 2개의 항만 처리가 가능한 특이점. =================</span>
+        </li>
+    </uL>
+
+    <ul>
+        <li th:each="dto, state : ${list}" th:text="${dto.sno % 5 == 0 }?
+        ${dto.sno}">
+        </li>
+    </ul>
+
+    <uL>
+        <li>
+            <span>================== 삼항연산자 예. ===============</span>
+        </li>
+    </uL>
+
+    <ul>
+        <li th:each="dto, state : ${list}" th:text="${dto.sno % 5 == 0 }? ${dto.sno}: ${dto.first}">
+        </li>
+    </ul>
+    <uL>
+        <li>
+            <span>===============================================================</span>
+        </li>
+    </uL>
+
+    <style>
+        .target {
+        background-color: red;
+        }
+    </style>
+
+    <ul>
+        <li th:each="dto, state : ${list}" th:class="${dto.sno % 5 == 0}?'target' " th:text="${dto}">
+        </li>
+    </ul>
+
+    <uL>
+        <li>
+            <span>==============================p.99 th:block 기능===============================</span>
+        </li>
+    </uL>
+
+    <ul>
+        <th:block th:each="dto: ${list}">
+            <li th:text="${dto.sno %5  == 0}?${dto.sno}:${dto.first}"></li>
+        </th:block>
+    </ul>
+
+</body>
+</html>
