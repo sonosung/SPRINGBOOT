@@ -33,9 +33,18 @@ public class GuestbookServiceTests {
 
         PageResultDTO<GuestbookDTO, Guestbook> resultDTO = service.getList(pageRequestDTO);
 
+        System.out.println("PREV (이전 페이지): " + resultDTO.isPrev());
+        System.out.println("NEXT (다음 페이지): " + resultDTO.isNext());
+        System.out.println("TOTAL (전체 페이지): " + resultDTO.getTotalPage());
+        System.out.println("------------------ 반복문으로 게시물을 불러옴 ------------------------");
+
         for (GuestbookDTO guestbookDTO : resultDTO.getDtoList()) {
             System.out.println(guestbookDTO);
         }
+
+        System.out.println("------------------ 화면에 출력 될 페이지 번호 -----------------------");
+        resultDTO.getPageList().forEach(i -> System.out.println(i));
+
     }
 
 }

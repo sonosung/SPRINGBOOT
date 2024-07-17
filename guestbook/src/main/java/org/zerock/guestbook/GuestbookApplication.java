@@ -10,9 +10,7 @@ public class GuestbookApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(GuestbookApplication.class, args);
-		System.out.println("as");
 
-		SpringApplication.run(GuestbookApplication.class, args);
 	}
 
 }
