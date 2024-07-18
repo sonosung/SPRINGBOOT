@@ -14,7 +14,9 @@ public class PageRequestDTO {
 
     //멤버변수 선언.
     private int page;
-    private  int size;
+    private int size;
+    private String type;
+    private String keyword;
 
     //기본생성자
     public PageRequestDTO(){
